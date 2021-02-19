@@ -3,10 +3,10 @@ name: Build Maven
 on:
   pull_request:
     branches:
-      - develop
+      - master
   push:
     branches:
-      - develop
+      - master
 env:
   ARTIFACTORY_URL: https://telefonicainnovationalpha.jfrog.io/artifactory/health-maven/com/koa/data/kafka
   ARTIFACTORY_USER: svc-data
