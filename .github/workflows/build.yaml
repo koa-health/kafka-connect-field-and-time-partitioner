@@ -30,7 +30,7 @@ jobs:
       - name: Build with Maven
         run: mvn package
       - name: upload to jfrog
-        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
           curl -u ${{ env.ARTIFACTORY_USER }}:${{ secrets.ARTIFACTORY_TOKEN }} \
           -X PUT "${{ env.ARTIFACTORY_URL }}/${{ env.PACKAGE_NAME}}/${{ env.PACKAGE_VERSION}}/${{env.PACKAGE_NAME}}-${{env.PACKAGE_VERSION}}.jar" \
