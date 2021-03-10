@@ -90,6 +90,16 @@ public final class FieldAndTimeBasedPartitioner<T> extends TimeBasedPartitioner<
             final StringBuilder builder = new StringBuilder();
 
             for (final String fieldName : this.fieldNames) {
+                String field;
+                String partitionName;
+
+                String[] fields = fieldName.split(":");
+                if (fieldName.length() > 1) {
+                    field = fields[0];
+                    partitionName = fields[1];
+                } else {
+                    field = partitionName = fieldName;
+                }
 
                 if (builder.length() != 0) {
                     builder.append(StorageCommonConfig.DIRECTORY_DELIM_DEFAULT);
@@ -97,10 +107,10 @@ public final class FieldAndTimeBasedPartitioner<T> extends TimeBasedPartitioner<
 
                 if (value instanceof Struct || value instanceof Map) {
 
-                    final String partitionField = (String) DataUtils.getNestedFieldValue(value, fieldName);
+                    final String partitionField = (String) DataUtils.getNestedFieldValue(value, field);
 
                     if (formatPath) {
-                        builder.append(String.join(DELIMITER_EQ, fieldName, partitionField));
+                        builder.append(String.join(DELIMITER_EQ, partitionName, partitionField));
                     } else {
                         builder.append(partitionField);
                     }
