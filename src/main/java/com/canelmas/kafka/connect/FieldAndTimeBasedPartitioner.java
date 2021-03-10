@@ -94,7 +94,7 @@ public final class FieldAndTimeBasedPartitioner<T> extends TimeBasedPartitioner<
                 String partitionName;
 
                 String[] fields = fieldName.split(":");
-                if (fieldName.length() > 1) {
+                if (fields.length > 1) {
                     field = fields[0];
                     partitionName = fields[1];
                 } else {
