@@ -8,7 +8,7 @@ on:
     branches:
       - master
 env:
-  ARTIFACTORY_URL: https://telefonicainnovationalpha.jfrog.io/artifactory/health-maven/com/koa/data/kafka
+  ARTIFACTORY_URL: https://telefonicainnovationalpha.jfrog.io/artifactory/health-maven/com/canelmas/kafka
   ARTIFACTORY_USER: svc-data
 jobs:
   build:
